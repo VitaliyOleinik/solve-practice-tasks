@@ -9,6 +9,7 @@ public class InversionLettersAndWords {
     public static void main(String[] args) {
         System.out.println(reverseWords("Привет! Как дела?"));
         System.out.println(reverseWordsStreams("Нормально, а у тебя как дела?"));
+        System.out.println(reverse("Отлично"));
     }
 
     private static String reverseWords(String string) {
@@ -31,7 +32,11 @@ public class InversionLettersAndWords {
 
     private static String reverseWordsStreams(String string) {
         return PATTERN.splitAsStream(string)
-                .map(w-> new StringBuilder(w).reverse())
+                .map(w -> new StringBuilder(w).reverse())
                 .collect(Collectors.joining(" "));
+    }
+
+    private static String reverse(String string) {
+        return new StringBuilder(string).reverse().toString();
     }
 }
