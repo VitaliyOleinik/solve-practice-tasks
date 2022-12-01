@@ -12,6 +12,7 @@ import static java.util.stream.Collectors.groupingBy;
 public class FindSymbolMoreRepeated {
     public static void main(String[] args) {
         System.out.println(maxOccurrenceCharacter("SSStrIInGG"));
+        System.out.println(maxOccurrenceCharacterStreams("AAAA42346645rhggdsdsad[,pkojihuycdxrdtcyguhijokpaaaaaSSStrIInGG"));
     }
 
     private static Map<Character, Integer> maxOccurrenceCharacter(String s) {
