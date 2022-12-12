@@ -45,5 +45,14 @@ public class CheckByNull {
                 .filter(Objects::nonNull)
                 .mapToInt(Integer::intValue).sum();
     }
+
+    public static boolean integersContainsNullsStream(List<Integer> integers) {
+        if (integers == null) {
+            return false;
+        }
+        return integers.stream()
+                .anyMatch(Objects::isNull);
+    }
+
 }
 
