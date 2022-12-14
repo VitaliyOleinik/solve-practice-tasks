@@ -1,5 +1,7 @@
 package com.tasks.objects_immutable_switch.entity;
 
+import com.tasks.objects_immutable_switch.CheckByNullThrowException;
+
 import java.awt.*;
 import java.util.Objects;
 
@@ -8,6 +10,15 @@ public class Car {
     private final Color color;
     private final String code;
     private final String nameSupplier;
+
+    public Car(String name, Color color) {
+        this.name = CheckByNullThrowException.requireNonNullElseThrow(name,
+                new UnsupportedOperationException ("Имя не может быть установлено в null"));
+        this.color = CheckByNullThrowException.requireNotNullElseThrow(color, () ->
+                new UnsupportedOperationException("Цвет не может быть установлен в null"));
+        this.code = "1";
+        this.nameSupplier = "name";
+    }
 
     public Car(String name, Color color, String nameSupplier) {
         if (name == null) {
