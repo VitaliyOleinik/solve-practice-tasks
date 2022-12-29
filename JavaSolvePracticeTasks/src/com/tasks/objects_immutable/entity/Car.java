@@ -1,6 +1,6 @@
-package com.tasks.objects_immutable_switch.entity;
+package com.tasks.objects_immutable.entity;
 
-import com.tasks.objects_immutable_switch.CheckByNullThrowException;
+import com.tasks.objects_immutable.CheckByNullThrowException;
 
 import java.awt.*;
 import java.util.Objects;

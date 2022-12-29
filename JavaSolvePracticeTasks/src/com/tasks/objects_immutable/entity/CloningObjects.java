@@ -1,4 +1,4 @@
-package com.tasks.objects_immutable_switch.entity;
+package com.tasks.objects_immutable.entity;
 
 public class CloningObjects {
     public static void main(String[] args) throws CloneNotSupportedException {

@@ -1,4 +1,4 @@
-package com.tasks.objects_immutable_switch;
+package com.tasks.objects_immutable;
 
 import java.util.function.Supplier;
 
