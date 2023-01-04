@@ -19,6 +19,10 @@ public class ComputeIfAbsent {
         System.out.println(jdbcUrl);
         // mongodb://192.168.100.10/customers_db
         String mongodbJdbcUrl = map.computeIfAbsent("mongodb", jdbcUrl);
+        String postgresqlJdbcUrl = map.computeIfAbsent("postgresql", jdbcUrl);
+        String mysqlJdbcUrl = map.computeIfAbsent("mysql", jdbcUrl);
         System.out.println(mongodbJdbcUrl);
+        System.out.println(postgresqlJdbcUrl);
+        System.out.println(mysqlJdbcUrl);
     }
 }
