@@ -9,7 +9,7 @@ import java.util.function.Function;
 public class ComputeIfAbsent {
     public static void main(String[] args) throws UnknownHostException {
         Map<String, String> map = new HashMap<>();
-        map.put("postgresql", "jdbc:postgresql://127.0.0.l/customers_db");
+        map.put("postgresql", "jdbc:postgresql://127.0.0.1/customers_db");
         map.put("mysql", "jdbc:mysql://192.168.0.50/customers_db");
 
         String address = InetAddress.getLocalHost().getHostAddress();
@@ -21,8 +21,11 @@ public class ComputeIfAbsent {
         String mongodbJdbcUrl = map.computeIfAbsent("mongodb", jdbcUrl);
         String postgresqlJdbcUrl = map.computeIfAbsent("postgresql", jdbcUrl);
         String mysqlJdbcUrl = map.computeIfAbsent("mysql", jdbcUrl);
+        // mongodb://172.24.96.1/customers_db
         System.out.println(mongodbJdbcUrl);
+        // jdbc:postgresql://127.0.0.1/customers_db
         System.out.println(postgresqlJdbcUrl);
+        // jdbc:mysql://192.168.0.50/customers_db
         System.out.println(mysqlJdbcUrl);
     }
 }
