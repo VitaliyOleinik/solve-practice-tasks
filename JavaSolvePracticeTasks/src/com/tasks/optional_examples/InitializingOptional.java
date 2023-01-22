@@ -18,4 +18,12 @@ public class InitializingOptional {
             // сделать что-то, что не вызывает book.getO
         }
     }
+
+    public static final String BOOK_STATUS = "UNKNOWN";
+
+    public static String findStatus() {
+        Optional<String> status = Optional.of("");
+
+        return status.orElse(BOOK_STATUS);
+    }
 }
