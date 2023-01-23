@@ -2,6 +2,7 @@ package com.tasks.optional_examples;
 
 import java.awt.print.Book;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 public class InitializingOptional {
     public static void main(String[] args) {
@@ -21,7 +22,7 @@ public class InitializingOptional {
 
     public static final String BOOK_STATUS = "UNKNOWN";
 
-    public String findStatus() {
+    public static String findStatus() {
         Optional<String> status = Optional.of("");
 
         return status.orElse(BOOK_STATUS);
@@ -29,8 +30,9 @@ public class InitializingOptional {
 
     // Предпочтительно
     public String findStatus1() {
+        Supplier<String> supplier = () -> "supplier";
         Optional<String> status = Optional.of(""); // эта переменная может быть пустой
-        // "123" вызывается, только если "status" является пустым
-        return status.orElseGet(this::findStatus());
+        // supplier вызывается, только если "status" является пустым
+        return status.orElseGet(supplier);
     }
 }
