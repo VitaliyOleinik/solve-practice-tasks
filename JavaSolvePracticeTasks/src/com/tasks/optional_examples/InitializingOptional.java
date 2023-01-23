@@ -21,9 +21,16 @@ public class InitializingOptional {
 
     public static final String BOOK_STATUS = "UNKNOWN";
 
-    public static String findStatus() {
+    public String findStatus() {
         Optional<String> status = Optional.of("");
 
         return status.orElse(BOOK_STATUS);
+    }
+
+    // Предпочтительно
+    public String findStatus1() {
+        Optional<String> status = Optional.of(""); // эта переменная может быть пустой
+        // "123" вызывается, только если "status" является пустым
+        return status.orElseGet(this::findStatus());
     }
 }
