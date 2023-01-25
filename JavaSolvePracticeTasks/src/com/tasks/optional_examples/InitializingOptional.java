@@ -2,6 +2,8 @@ package com.tasks.optional_examples;
 
 import javax.swing.text.html.Option;
 import java.awt.print.Book;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -73,4 +75,53 @@ public class InitializingOptional {
 
         return status.or(() -> Optional.of(BOOK_STATUS));
     }
+
+    private static final String NOT_FOUND = "NOT FOUND";
+    // Предпочтительно
+    static class Book {
+        String name;
+        int price;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+
+        public void setPrice(int price) {
+            this.price = price;
+        }
+    }
+    public String findFirstCheaperBook(int price, List<Book> books) {
+        return books.stream()
+                .filter(b -> b.getPrice()<price)
+                .findFirst()
+                .map(Book::getName)
+                .orElse(NOT_FOUND);
+    }
+
+    class Author {
+        List<Book> books;
+
+        public List<Book> getBooks() {
+            return books;
+        }
+
+        public void setBooks(List<Book> books) {
+            this.books = books;
+        }
+    }
+
+    public void validateAuthorOfBook(Book book) {
+        Optional<Author> author = Optional.empty();
+        author.filter(a -> a.getBooks().contains(book))
+                .orElseThrow();
+    }
+
 }
