@@ -2,10 +2,7 @@ package com.tasks.optional_examples;
 
 import javax.swing.text.html.Option;
 import java.awt.print.Book;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class InitializingOptional {
@@ -77,6 +74,7 @@ public class InitializingOptional {
     }
 
     private static final String NOT_FOUND = "NOT FOUND";
+
     // Предпочтительно
     static class Book {
         String name;
@@ -98,9 +96,10 @@ public class InitializingOptional {
             this.price = price;
         }
     }
+
     public String findFirstCheaperBook(int price, List<Book> books) {
         return books.stream()
-                .filter(b -> b.getPrice()<price)
+                .filter(b -> b.getPrice() < price)
                 .findFirst()
                 .map(Book::getName)
                 .orElse(NOT_FOUND);
@@ -122,6 +121,16 @@ public class InitializingOptional {
         Optional<Author> author = Optional.empty();
         author.filter(a -> a.getBooks().contains(book))
                 .orElseThrow();
+    }
+
+    public void OptionalIntLongDouble() {
+        // Предпочтительно
+        // развернуть посредством getAsIntO
+        OptionalInt priceInt = OptionalInt.of(50);
+        // развернуть посредством getAsLongO
+        OptionalLong priceLong = OptionalLong.of(50L);
+        // развернуть посредством getAsDouble()
+        OptionalDouble priceDouble = OptionalDouble.of(49.99d);
     }
 
 }
