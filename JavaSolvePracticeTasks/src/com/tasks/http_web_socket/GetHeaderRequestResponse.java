@@ -42,4 +42,13 @@ public class GetHeaderRequestResponse {
                 .uri(URI.create("https://reqres.in/api/users/2"))
                 .build();
     }
+
+    private void createBodyFromString() {
+        HttpRequest requestBody = HttpRequest.newBuilder()
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(
+                        "{\"name\": \"morpheus\",\"job\": \"leader\"}"))
+                .uri(URI.create("https://reqres.in/api/users"))
+                .build();
+    }
 }
