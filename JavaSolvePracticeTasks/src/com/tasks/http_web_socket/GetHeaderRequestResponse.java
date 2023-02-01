@@ -1,9 +1,14 @@
 package com.tasks.http_web_socket;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.http.HttpHeaders;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,5 +55,23 @@ public class GetHeaderRequestResponse {
                         "{\"name\": \"morpheus\",\"job\": \"leader\"}"))
                 .uri(URI.create("https://reqres.in/api/users"))
                 .build();
+    }
+
+    private void createBodyFromInputStream() {
+        HttpRequest requestBodyOfInputStream = HttpRequest.newBuilder()
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofInputStream(()
+                        -> inputStream("user.json")))
+                .uri(URI.create("https://reqres.in/api/users"))
+                .build();
+    }
+
+    private static ByteArrayInputStream inputStream(String fileName) {
+        try (ByteArrayInputStream inputStream = new ByteArrayInputStream(
+                Files.readAllBytes(Path.of(fileName)))) {
+            return inputStream;
+        } catch (IOException ex) {
+            throw new RuntimeException("He получается прочитать файл", ex);
+        }
     }
 }
