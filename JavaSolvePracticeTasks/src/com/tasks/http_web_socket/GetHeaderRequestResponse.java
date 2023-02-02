@@ -1,6 +1,7 @@
 package com.tasks.http_web_socket;
 
 import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
@@ -73,5 +74,13 @@ public class GetHeaderRequestResponse {
         } catch (IOException ex) {
             throw new RuntimeException("He получается прочитать файл", ex);
         }
+    }
+
+    private void createBodyFromFile() throws FileNotFoundException {
+        HttpRequest requestBodyOfFile = HttpRequest.newBuilder()
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofFile(Path.of("user.json")))
+                .uri(URI.create("https://reqres.in/api/users"))
+                .build();
     }
 }
